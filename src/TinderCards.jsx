@@ -3,9 +3,12 @@ import React,{useEffect, useState} from 'react'
 import TinderCard from 'react-tinder-card'
 function TinderCards() {
   const [people, setPeople] = useState([]);
-  useEffect(async()=>{
+  useEffect(()=>{
+    const fetchData = async()=>{
     const req = await axios.get('/tinder/cards');
     setPeople(req.data)
+    }
+    fetchData()
   },[])
   const swiped = (direction, nameToDelete) =>{
     console.log('removing: ' + nameToDelete)
